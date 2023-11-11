@@ -8,7 +8,7 @@ import category4 from '../../../assets/menu/slide4.jpg'
 import category5 from '../../../assets/menu/slide5.jpg'
 
 import { Pagination } from 'swiper/modules';
-import SharedTitle from "../../../sharedComponents/SharedTitle/SharedTitle";
+import SharedTitle from "../../../sharedComponents/SharedTitle/SectionTitle";
 
 const Category = () => {
 
