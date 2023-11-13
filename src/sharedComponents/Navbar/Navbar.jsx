@@ -4,7 +4,7 @@ const Navbar = () => {
     const links = <>
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/menu'>Our Menu</NavLink></li>
-        <li><NavLink to='/shop'>Our Shop</NavLink></li>
+        <li><NavLink to='/orderFood'>Order Food</NavLink></li>
     </>
     return (
         <div className="navbar bg-opacity-30 bg-black max-w-screen-xl text-white fixed z-30">

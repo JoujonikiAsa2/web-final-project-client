@@ -18,7 +18,7 @@ const Home = () => {
            <Category></Category>
            <BistroBossParallax parallaxTitle="Bistro Boss" parallaxImg={chef} description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus, libero accusamus laborum deserunt ratione dolor officiis praesentium! Deserunt magni aperiam dolor eius dolore at, nihil iusto ducimus incidunt quibusdam nemo."></BistroBossParallax>
            <SectionTitle subHeading="From Our Menu" heading="Popular Items"></SectionTitle>
-           <MenuCategory items={populars} buttonText="View Full Menu"></MenuCategory>
+           <MenuCategory items={populars}  location="/menu" buttonText="View Full Menu"></MenuCategory>
            <FoodItems count={3}></FoodItems>
            <Featured></Featured>
            <Testimonials></Testimonials>
