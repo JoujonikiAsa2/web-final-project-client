@@ -1,7 +1,9 @@
+import { NavLink } from "react-router-dom";
+
 const Navbar = () => {
     const links = <>
-        <li><a>Item 1</a></li>
-        <li><a>Item 3</a></li>
+        <li><NavLink to='/'>Home</NavLink></li>
+        <li><NavLink to='/shop'>Our Shop</NavLink></li>
     </>
     return (
         <div className="navbar bg-opacity-30 bg-black max-w-screen-xl text-white fixed z-30">
