@@ -6,6 +6,10 @@ import Shop from "../pages/OrderFood/OrderFood";
 import OrderFood from "../pages/OrderFood/OrderFood";
 import SignUp from "../pages/SignUp/SignUp";
 import Login from "../pages/Login/Login";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import DashBoard from "../pages/Layout/DashBoard";
+import Cart from "../pages/DashBoard/Cart/Cart";
+import AllUsers from "../pages/DashBoard/Users/AllUsers";
 
 const router = createBrowserRouter([
     {
@@ -18,7 +22,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/menu',
-                element: <Menu></Menu>
+                element:<PrivateRoute><Menu></Menu></PrivateRoute>
             },
             {
                 path: '/login',
@@ -32,6 +36,34 @@ const router = createBrowserRouter([
                 path: '/orderFood/:category',
                 element: <OrderFood></OrderFood>,
                 loader: ()=>fetch("http://localhost:5001/totalMenus")
+            },
+        ]
+    },
+    {
+        path: "dashboard",
+        element: <DashBoard></DashBoard>,
+        children:[
+            {
+                path: "cart",
+                element: <Cart></Cart>
+            },
+
+            // Admin routes
+            {
+                path: "users",
+                element: <AllUsers></AllUsers>
+            },
+            {
+                path: "manageItems",
+                element: <Cart></Cart>
+            },
+            {
+                path: "manageBookings",
+                element: <Cart></Cart>
+            },
+            {
+                path: "addItems",
+                element: <Cart></Cart>
             },
         ]
     }

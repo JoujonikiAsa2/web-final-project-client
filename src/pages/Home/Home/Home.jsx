@@ -8,10 +8,17 @@ import MenuCategory from "../../../sharedComponents/MenuCategory/MenuCategory";
 import useMenuItems from "../../../hooks/useMenuItems";
 import FoodItems from "../../../sharedComponents/FoodItems/FoodItems";
 import SectionTitle from "../../../sharedComponents/SharedTitle/SectionTitle";
+import Loading from "../../../sharedComponents/Loading/Loading";
+import { useContext } from "react";
+import { AuthContext } from "../../../AuthProvider/AuthProvider";
 const Home = () => {
     const [menus] = useMenuItems()
+    const {loading} = useContext(AuthContext)
     const populars = menus.filter(item => item.category == 'popular')
     console.log(populars)
+    if(loading){
+        return <Loading></Loading>
+    }
     return (
         <div>
            <Banner></Banner>
