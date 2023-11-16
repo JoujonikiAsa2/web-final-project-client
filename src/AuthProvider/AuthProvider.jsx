@@ -1,29 +1,30 @@
 import React, { createContext, useEffect, useState } from 'react';
 import auth from '../../firebase.config';
 import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
+import useAxiosPublic from '../hooks/useAxiosPublic';
 
 export const AuthContext = createContext()
-const AuthProvider = ({children}) => {
+const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
-    const [loading,setLoading] = useState(true)
+    const [loading, setLoading] = useState(true)
     const googleProvider = new GoogleAuthProvider()
+    const axiosPublic = useAxiosPublic()
 
-
-    const createUser = (email,password) =>{
+    const createUser = (email, password) => {
         setLoading(true)
-        return createUserWithEmailAndPassword(auth,email,password)
+        return createUserWithEmailAndPassword(auth, email, password)
     }
-    const loginUser = (email,password) =>{
+    const loginUser = (email, password) => {
         setLoading(true)
-        return signInWithEmailAndPassword(auth,email,password)
+        return signInWithEmailAndPassword(auth, email, password)
     }
 
-    const googleLogin = ()=>{
+    const googleLogin = () => {
         setLoading(true)
         return signInWithPopup(auth, googleProvider)
     }
 
-    const logOut = ()=>{
+    const logOut = () => {
         setLoading(true)
         return signOut(auth)
     }
@@ -34,17 +35,31 @@ const AuthProvider = ({children}) => {
         });
     }
 
-    useEffect(()=>{
-        const subscriber = onAuthStateChanged(auth, (currentUser)=>{
+    useEffect(() => {
+        const subscriber = onAuthStateChanged(auth, (currentUser) => {
             console.log(currentUser)
             setUser(currentUser)
+            if (currentUser) {
+                const userInfo = { email: currentUser.email }
+                axiosPublic.post('/jwt', userInfo)
+                    .then(res => {
+                        if (res.data.token) {
+                            localStorage.setItem('access-token', res.data.token)
+                            console.log(`token is : ${localStorage.getItem('access-token')}`)
+                        }
+                    })
+                    .catch(error => console.log(error))
+            }
+            else {
+                localStorage.removeItem('access-token')
+            }
             setLoading(false)
 
         })
-        return ()=>{
+        return () => {
             return subscriber()
         }
-    },[])
+    }, [])
     const authInfo = {
         createUser,
         updateUserProfile,
