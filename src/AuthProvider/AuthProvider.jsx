@@ -59,7 +59,7 @@ const AuthProvider = ({ children }) => {
         return () => {
             return subscriber()
         }
-    }, [])
+    }, [axiosPublic])
     const authInfo = {
         createUser,
         updateUserProfile,

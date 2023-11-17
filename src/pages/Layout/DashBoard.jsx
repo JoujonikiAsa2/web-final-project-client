@@ -3,12 +3,13 @@ import { FaEnvelope, FaHome, FaList, FaSearch, FaShoppingCart, FaUsers, FaUtensi
 import { RiCalendarFill, RiFeedbackFill, RiReservedFill } from 'react-icons/ri';
 import { NavLink, Outlet } from 'react-router-dom';
 import useCarts from '../../hooks/useCarts';
+import useAdmin from '../../hooks/useAdmin';
 
 const DashBoard = () => {
 
     const [cart] = useCarts()
     // Get is admin value from the database
-    const isAdmin = true
+    const [isAdmin] = useAdmin()
     return (
         <div className='flex  min-h-screen '>
             <div className='w-64 bg-orange-400 fixed h-full overflow-y-auto z-30'>
