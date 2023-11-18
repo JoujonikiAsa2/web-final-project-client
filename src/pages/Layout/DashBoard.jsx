@@ -10,6 +10,7 @@ const DashBoard = () => {
     const [cart] = useCarts()
     // Get is admin value from the database
     const [isAdmin] = useAdmin()
+    console.log(isAdmin)
     return (
         <div className='flex  min-h-screen '>
             <div className='w-64 bg-orange-400 fixed h-full overflow-y-auto z-30'>
@@ -46,7 +47,7 @@ const DashBoard = () => {
                                     <NavLink to='/dashboard/cart'><FaShoppingCart></FaShoppingCart> My Carts ({cart.length})</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to='/dashboard/booking'><RiCalendarFill></RiCalendarFill> My Bookings</NavLink>
+                                    <NavLink to='/dashboard/bookTable'><RiCalendarFill></RiCalendarFill> My Bookings</NavLink>
                                 </li>
                             </>
                     }

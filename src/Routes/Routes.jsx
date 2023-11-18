@@ -11,6 +11,10 @@ import DashBoard from "../pages/Layout/DashBoard";
 import Cart from "../pages/DashBoard/Cart/Cart";
 import AllUsers from "../pages/DashBoard/Users/AllUsers";
 import AdminRoutes from "../AdminRoute/AdminRoutes";
+import AddItem from "../pages/DashBoard/AddItem/AddItem";
+import ManageItem from "../pages/DashBoard/ManageItems/ManageItem";
+import Update from "../pages/DashBoard/ManageItems/Components/Update";
+import Booking from "../pages/DashBoard/Booking/Booking";
 
 const router = createBrowserRouter([
     {
@@ -36,7 +40,7 @@ const router = createBrowserRouter([
             {
                 path: '/orderFood/:category',
                 element: <OrderFood></OrderFood>,
-                loader: ()=>fetch("http://localhost:5001/totalMenus")
+                loader: ()=>fetch("http://localhost:5000/totalMenus")
             },
         ]
     },
@@ -46,7 +50,11 @@ const router = createBrowserRouter([
         children:[
             {
                 path: "cart",
-                element: <AdminRoutes><Cart></Cart></AdminRoutes>
+                element:<PrivateRoute><Cart></Cart></PrivateRoute>
+            },
+            {
+                path: "bookTable",
+                element: <Booking></Booking>
             },
 
             // Admin routes
@@ -56,7 +64,11 @@ const router = createBrowserRouter([
             },
             {
                 path: "manageItems",
-                element: <Cart></Cart>
+                element: <ManageItem></ManageItem>
+            },
+            {
+              path: "update/:id" ,
+              element: <Update></Update>,
             },
             {
                 path: "manageBookings",
@@ -64,7 +76,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "addItems",
-                element: <Cart></Cart>
+                element: <AdminRoutes><AddItem></AddItem></AdminRoutes>
             },
         ]
     }

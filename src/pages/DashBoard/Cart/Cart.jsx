@@ -4,6 +4,7 @@ import { RiDeleteBin2Fill } from 'react-icons/ri';
 import Swal from 'sweetalert2';
 import { axiosSecure } from '../../../hooks/useAxiosSecure';
 import { FaTrashAlt } from 'react-icons/fa';
+import SectionTitle from '../../../sharedComponents/SharedTitle/SectionTitle';
 
 const Cart = () => {
 
@@ -48,7 +49,7 @@ const Cart = () => {
 
     return (
         <div>
-            <h2 className='text-2xl font-semibold text-center pt-6 text-orange-400'>My Cart</h2>
+            <SectionTitle subHeading="My cart" heading="WANNA ADD MORE?"></SectionTitle>
             <div className=' bg-white rounded  mx-12 my-6'>
                 <div className='flex justify-between items-center py-3'>
                     <h2 className='text-lg font-semibold'>{cart.length} Items added to your cart</h2>

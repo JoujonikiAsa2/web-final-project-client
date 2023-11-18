@@ -9,16 +9,16 @@ import { FaGoogle } from 'react-icons/fa';
 import SocialLogin from '../../sharedComponents/SocialLogin';
 
 const Login = () => {
-    const [disabled, setDisabled] = useState(true)
+    // const [disabled, setDisabled] = useState(true)
     const { loginUser } = useContext(AuthContext)
     const navigate = useNavigate()
     const location = useLocation()
 
     const from = location.state?.from?.pathname || '/'
 
-    useEffect(() => {
-        loadCaptchaEnginge(6);
-    }, [])
+    // useEffect(() => {
+    //     loadCaptchaEnginge(6);
+    // }, [])
 
     const handleLogin = (e) => {
         e.preventDefault()
@@ -53,16 +53,16 @@ const Login = () => {
             })
     }
 
-    const handleValidateCaptcha = (e) => {
-        const user_captcha_value = e.target.value
-        if (validateCaptcha(user_captcha_value)) {
-            setDisabled(false);
-        }
+    // const handleValidateCaptcha = (e) => {
+    //     const user_captcha_value = e.target.value
+    //     if (validateCaptcha(user_captcha_value)) {
+    //         setDisabled(false);
+    //     }
 
-        else {
-            setDisabled(true);
-        }
-    }
+    //     else {
+    //         setDisabled(true);
+    //     }
+    // }
     return (
         <>
             <Helmet>
@@ -91,15 +91,15 @@ const Login = () => {
                                     <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                                 </label>
                             </div>
-                            <div className="form-control">
+                            {/* <div className="form-control">
                                 <label className="label">
                                     <LoadCanvasTemplate />
                                 </label>
                                 <input type="text" name="captcha" placeholder="Type here" className="input input-bordered" onBlur={handleValidateCaptcha} required />
-                            </div>
+                            </div> */}
 
                             <div className="form-control mt-6">
-                                <button disabled={disabled} className="btn btn-primary">Login</button>
+                                <button className="btn btn-primary">Login</button>
                             </div>
                             <Link to="/signUp" className='text-xs'>Don't have an account? Go to <span className='text-red-600'>Sign Up</span></Link>
                         </form>
