@@ -14,7 +14,8 @@ import AdminRoutes from "../AdminRoute/AdminRoutes";
 import AddItem from "../pages/DashBoard/AddItem/AddItem";
 import ManageItem from "../pages/DashBoard/ManageItems/ManageItem";
 import Update from "../pages/DashBoard/ManageItems/Components/Update";
-import Booking from "../pages/DashBoard/Booking/Booking";
+import Booking from "../pages/DashBoard/Reservation/Reservation";
+import Reservation from "../pages/DashBoard/Reservation/Reservation";
 
 const router = createBrowserRouter([
     {
@@ -54,7 +55,11 @@ const router = createBrowserRouter([
             },
             {
                 path: "bookTable",
-                element: <Booking></Booking>
+                element: <Cart></Cart>
+            },
+            {
+                path: "reservation",
+                element: <Reservation></Reservation>
             },
 
             // Admin routes

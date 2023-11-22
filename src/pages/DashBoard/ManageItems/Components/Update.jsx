@@ -50,6 +50,7 @@ const Update = () => {
                 recipe: data.recipe,
                 image: res.data.data.display_url
             }
+            
             axiosSecure.patch(`/menus/${id}`, food)
                 .then(res => {
                     console.log(res.data)

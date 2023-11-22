@@ -1,7 +1,11 @@
 import { Formik } from "formik";
 import SectionTitle from "../../../sharedComponents/SharedTitle/SectionTitle";
+import DateTime from "./DateTime";
+import { axiosPublic } from "../../../hooks/useAxiosPublic";
+import Swal from "sweetalert2";
+import { RiReservedFill } from "react-icons/ri";
 
-const Booking = () => {
+const Reservation = () => {
     return (
         <div className="mx-12 lg:py-24">
             <SectionTitle subHeading="reservation" heading="Book a table"></SectionTitle>
@@ -24,6 +28,18 @@ const Booking = () => {
                         setSubmitting(false);
                     }, 400);
                     console.log(values)
+
+                    axiosPublic.post('/Reservations', values)
+                    .then(res=>{
+                        if(res.data.insertedId){
+                            Swal.fire({
+                                title: "Booked",
+                                text: "values.name booked successfuly",
+                                icon: 'success'
+                            })
+                        }
+                    })
+                    .catch(error=> console.log(error))
                 }}
             >
                 {({
@@ -37,18 +53,10 @@ const Booking = () => {
                     /* and other goodies */
                 }) => (
                     <form onSubmit={handleSubmit}>
-                        <div className="flex flex-col gap-8">
-                            <div className="flex flex-col md:flex-row lg:flex-row justify-between items-center ">
+                        <div className="flex flex-col lg:gap-8 gap-4">
+                            <div className="flex flex-col md:flex-row lg:flex-row justify-between items-center gap-4">
                                 <div>
-                                    <input
-                                        type="date"
-                                        name="date"
-                                        onChange={handleChange}
-                                        onBlur={handleBlur}
-                                        value={values.date}
-                                        className="input input-bordered w-[300px]"
-                                    />
-                                    {errors.date && touched.date && errors.date}
+                                    <DateTime></DateTime>
                                 </div>
 
                                 <div>
@@ -65,19 +73,23 @@ const Booking = () => {
                                 </div>
 
                                 <div>
-                                    <input
-                                        type="text"
-                                        name="guest"
-                                        placeholder="Guest"
-                                        onChange={handleChange}
-                                        onBlur={handleBlur}
-                                        value={values.guest}
-                                        className="input input-bordered w-[300px]"
-                                    />
+                                    <select
+                                    name="guest"
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                    value={values.guest}
+                                    className="input input-bordered w-[300px]"
+                                    >
+                                        <option value=""></option>
+                                        <option value="1">1 Persion</option>
+                                        <option value="2">2 Persions</option>
+                                        <option value="3">3 Persions</option>
+                                        <option value="4">4 Persions</option>
+                                    </select>
                                     {errors.guest && touched.guest && errors.guest}
                                 </div>
                             </div>
-                            <div className="flex flex-col md:flex-row lg:flex-row justify-between items-center ">
+                            <div className="flex flex-col md:flex-row lg:flex-row justify-between items-center gap-4">
                                 <div>
                                     <input
                                         type="text"
@@ -118,7 +130,7 @@ const Booking = () => {
                         </div>
                         <div className="flex justify-center items-center py-6">
                             <button type="submit" disabled={isSubmitting} className="btn bg-[#B58130]">
-                                Submit
+                            <RiReservedFill></RiReservedFill> Book a table
                             </button>
                         </div>
                     </form>
@@ -128,4 +140,4 @@ const Booking = () => {
     );
 };
 
-export default Booking;
+export default Reservation;
