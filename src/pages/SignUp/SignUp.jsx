@@ -34,7 +34,7 @@ const SignUp = () => {
                             email: data.email,
                             photoUrl: data.photoUrl
                         }
-                        axiosPublic.post('/users', userInfo)
+                        axiosPublic.post('/api/users', userInfo)
                             .then(res => {
                                 if (res.data.insertedId) {
                                     console.log("user added to the database")
@@ -56,7 +56,7 @@ const SignUp = () => {
                                 }
                             })
                     })
-                    .catch(error=>console.log(error.message))
+                    .catch(error => console.log(error.message))
 
                 navigate('/login')
             })

@@ -2,7 +2,6 @@ import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../pages/Layout/MainLayout";
 import Home from "../pages/Home/Home/Home";
 import Menu from "../pages/Menu/Menu";
-import Shop from "../pages/OrderFood/OrderFood";
 import OrderFood from "../pages/OrderFood/OrderFood";
 import SignUp from "../pages/SignUp/SignUp";
 import Login from "../pages/Login/Login";
@@ -14,8 +13,9 @@ import AdminRoutes from "../AdminRoute/AdminRoutes";
 import AddItem from "../pages/DashBoard/AddItem/AddItem";
 import ManageItem from "../pages/DashBoard/ManageItems/ManageItem";
 import Update from "../pages/DashBoard/ManageItems/Components/Update";
-import Booking from "../pages/DashBoard/Reservation/Reservation";
 import Reservation from "../pages/DashBoard/Reservation/Reservation";
+import Payment from "../pages/DashBoard/Payment/Payment";
+import PaymentHistory from "../pages/DashBoard/PaymentHistory/PaymentHistory";
 
 const router = createBrowserRouter([
     {
@@ -28,7 +28,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/menu',
-                element:<PrivateRoute><Menu></Menu></PrivateRoute>
+                element: <PrivateRoute><Menu></Menu></PrivateRoute>
             },
             {
                 path: '/login',
@@ -41,17 +41,17 @@ const router = createBrowserRouter([
             {
                 path: '/orderFood/:category',
                 element: <OrderFood></OrderFood>,
-                loader: ()=>fetch("http://localhost:5000/totalMenus")
+                loader: () => fetch("http://localhost:5001/totalMenus")
             },
         ]
     },
     {
         path: "dashboard",
         element: <DashBoard></DashBoard>,
-        children:[
+        children: [
             {
                 path: "cart",
-                element:<PrivateRoute><Cart></Cart></PrivateRoute>
+                element: <PrivateRoute><Cart></Cart></PrivateRoute>
             },
             {
                 path: "bookTable",
@@ -61,6 +61,15 @@ const router = createBrowserRouter([
                 path: "reservation",
                 element: <Reservation></Reservation>
             },
+            {
+                path: "payment",
+                element: <Payment></Payment>
+            },
+            {
+                path: 'paymentHistory',
+                element: <PaymentHistory></PaymentHistory>
+            },
+
 
             // Admin routes
             {
@@ -72,8 +81,8 @@ const router = createBrowserRouter([
                 element: <ManageItem></ManageItem>
             },
             {
-              path: "update/:id" ,
-              element: <Update></Update>,
+                path: "update/:id",
+                element: <Update></Update>,
             },
             {
                 path: "manageBookings",

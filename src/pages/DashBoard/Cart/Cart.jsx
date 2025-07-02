@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import { axiosSecure } from '../../../hooks/useAxiosSecure';
 import { FaTrashAlt } from 'react-icons/fa';
 import SectionTitle from '../../../sharedComponents/SharedTitle/SectionTitle';
+import { Link } from 'react-router-dom';
 
 const Cart = () => {
 
@@ -54,7 +55,11 @@ const Cart = () => {
                 <div className='flex justify-between items-center py-3'>
                     <h2 className='text-lg font-semibold'>{cart.length} Items added to your cart</h2>
                     <h4 className='text-lg font-semibold'>Total Price: ${totalPrice}</h4>
-                    <button className='btn btn-sm bg-orange-400'>Pay</button>
+                    {
+                        cart.length ? <>
+                            <Link to="/dashboard/payment"><button disabled={!cart.length} className='btn btn-sm bg-orange-400'>Pay</button></Link>
+                        </> : <button disabled={true} className='btn btn-sm bg-orange-400'>Pay</button>
+                    }
                 </div>
                 <div className="overflow-x-auto rounded-2xl">
                     <table className="table  w-full">

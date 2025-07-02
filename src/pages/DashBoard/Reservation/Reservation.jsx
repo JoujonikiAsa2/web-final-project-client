@@ -4,8 +4,14 @@ import DateTime from "./DateTime";
 import { axiosPublic } from "../../../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import { RiReservedFill } from "react-icons/ri";
+import { useLocation, useNavigate } from "react-router-dom";
+import Time from "./Time";
 
 const Reservation = () => {
+
+    const navigate = useNavigate()
+    const locatio = useLocation()
+    console.log(new Date().toTimeString())
     return (
         <div className="mx-12 lg:py-24">
             <SectionTitle subHeading="reservation" heading="Book a table"></SectionTitle>
@@ -22,11 +28,11 @@ const Reservation = () => {
                     }
                     return errors;
                 }}
-                onSubmit={(values, { setSubmitting }) => {
-                    setTimeout(() => {
-                        alert(JSON.stringify(values, null, 2));
-                        setSubmitting(false);
-                    }, 400);
+                onSubmit={(values) => {
+                    // setTimeout(() => {
+                    //     alert(JSON.stringify(values, null, 2));
+                    //     setSubmitting(false);
+                    // }, 400);
                     console.log(values)
 
                     axiosPublic.post('/Reservations', values)
@@ -38,6 +44,7 @@ const Reservation = () => {
                                 icon: 'success'
                             })
                         }
+                        navigate('dashboard/payment')
                     })
                     .catch(error=> console.log(error))
                 }}
@@ -61,14 +68,17 @@ const Reservation = () => {
 
                                 <div>
                                     <input
-                                        type="text"
+                                        type="time"
                                         name="time"
                                         placeholder="Time"
                                         onChange={handleChange}
                                         onBlur={handleBlur}
                                         value={values.time}
+                                        defaultValue=""
                                         className="input input-bordered w-[300px]"
                                     />
+
+                                    {/* <Time></Time> */}
                                     {errors.time && touched.time && errors.time}
                                 </div>
 

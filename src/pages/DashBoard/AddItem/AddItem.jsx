@@ -20,6 +20,7 @@ const AddItem = () => {
         formState: { errors },
     } = useForm()
     const onSubmit = async (data) => {
+        
         console.log(data)
         const imageFile = { image: data.image[0] }
         const res = await axiosPublic.post(image_hoisting_api, imageFile, {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaEnvelope, FaHome, FaList, FaSearch, FaShoppingCart, FaUsers, FaUtensils } from 'react-icons/fa';
-import { RiCalendarFill, RiFeedbackFill, RiReservedFill } from 'react-icons/ri';
+import { RiCalendarFill, RiFeedbackFill, RiHistoryFill, RiReservedFill } from 'react-icons/ri';
 import { NavLink, Outlet } from 'react-router-dom';
 import useCarts from '../../hooks/useCarts';
 import useAdmin from '../../hooks/useAdmin';
@@ -12,7 +12,7 @@ const DashBoard = () => {
     const [isAdmin] = useAdmin()
     console.log(isAdmin)
     return (
-        <div className='flex  min-h-screen '>
+        <div className='flex flex-row min-h-screen '>
             <div className='w-64 bg-orange-400 fixed h-full overflow-y-auto z-30'>
                 <ul className='menu p-4'>
                     {
@@ -39,6 +39,11 @@ const DashBoard = () => {
                                 </li>
                                 <li>
                                     <NavLink to='/dashboard/reservation'><RiReservedFill></RiReservedFill> User Reservation</NavLink>
+                                </li>
+                                <li>
+                                    <NavLink to='/dashboard/paymentHistory'>
+                                        <FaList></FaList>
+                                        Real Payment History</NavLink>
                                 </li>
                                 <li>
                                     <NavLink to='/dashboard/review'><RiFeedbackFill></RiFeedbackFill> Add Review</NavLink>

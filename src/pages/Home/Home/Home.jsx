@@ -14,21 +14,21 @@ import { AuthContext } from "../../../AuthProvider/AuthProvider";
 const Home = () => {
     const [menus] = useMenuItems()
     const {loading} = useContext(AuthContext)
-    const populars = menus.filter(item => item.category == 'popular')
-    console.log(populars)
+    // const populars = menus.filter(item => item.category == 'popular')
+    // console.log(populars)
     if(loading){
         return <Loading></Loading>
     }
     return (
         <div>
            <Banner></Banner>
-           <Category></Category>
-           <BistroBossParallax parallaxTitle="Bistro Boss" parallaxImg={chef} description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus, libero accusamus laborum deserunt ratione dolor officiis praesentium! Deserunt magni aperiam dolor eius dolore at, nihil iusto ducimus incidunt quibusdam nemo."></BistroBossParallax>
-           <SectionTitle subHeading="From Our Menu" heading="Popular Items"></SectionTitle>
-           <MenuCategory items={populars}  location="/menu" buttonText="View Full Menu"></MenuCategory>
-           <FoodItems count={3}></FoodItems>
-           <Featured></Featured>
-           <Testimonials></Testimonials>
+           {/* <Category></Category> */}
+           {/* <BistroBossParallax parallaxTitle="Bistro Boss" parallaxImg={chef} description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus, libero accusamus laborum deserunt ratione dolor officiis praesentium! Deserunt magni aperiam dolor eius dolore at, nihil iusto ducimus incidunt quibusdam nemo."></BistroBossParallax> */}
+           {/* <SectionTitle subHeading="From Our Menu" heading="Popular Items"></SectionTitle> */}
+           {/* <MenuCategory items={populars}  location="/menu" buttonText="View Full Menu"></MenuCategory> */}
+           {/* <FoodItems count={3}></FoodItems> */}
+           {/* <Featured></Featured> */}
+           {/* <Testimonials></Testimonials> */}
         </div>
     );
 };

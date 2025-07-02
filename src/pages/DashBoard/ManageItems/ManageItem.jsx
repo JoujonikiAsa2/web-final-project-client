@@ -69,7 +69,7 @@ const ManageItem = () => {
                             <th>Acions</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    {/* <tbody>
                         {
                             menus.map((item, index) => <tr>
                                 <td>{index + 1}</td>
@@ -94,7 +94,7 @@ const ManageItem = () => {
                                 <td><button className="btn bg-[#B91C1C]" onClick={() => handleDelete(item._id)}><FaTrashAlt className="text-white"></FaTrashAlt></button></td>
                             </tr>)
                         }
-                    </tbody>
+                    </tbody> */}
                 </table>
             </div>
         </div>
