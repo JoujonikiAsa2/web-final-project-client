@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 export const axiosSecure = axios.create({
-    baseURL: "http://localhost:5001"
+    baseURL: "https://food-finder-chi-puce.vercel.app"
 })
 const useAxiosSecure = () => {
     const navigate = useNavigate();

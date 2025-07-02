@@ -41,7 +41,7 @@ const router = createBrowserRouter([
             {
                 path: '/orderFood/:category',
                 element: <OrderFood></OrderFood>,
-                loader: () => fetch("http://localhost:5001/totalMenus")
+                loader: () => fetch("https://food-finder-chi-puce.vercel.app/totalMenus")
             },
         ]
     },
